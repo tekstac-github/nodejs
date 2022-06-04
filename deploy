@@ -1,2 +1,2 @@
-sudo npm install pm2
-sudo pm2 start
+npm install pm2
+pm2 start
