@@ -1,13 +1,9 @@
-var http = require('http');
+const http = require('http')
+const fs = require('fs')
 
-var server = http.createServer(function(request, response) {
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'content-type': 'text/html' })
+  fs.createReadStream('index.html').pipe(res)
+})
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
-
-});
-
-var port = 3000;
-server.listen(port);
-
-console.log("Server running at http://localhost:%d", port);
+server.listen(process.env.PORT || 3000)
